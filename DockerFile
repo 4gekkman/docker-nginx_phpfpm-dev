@@ -73,11 +73,16 @@ RUN apt-get update && apt-get -y upgrade
       ; exit 0
   
   # 6.3. Установить TOR
-  RUN echo "deb http://deb.torproject.org/torproject.org xenial main" >> /etc/apt/sources.list
-  RUN echo "deb-src http://deb.torproject.org/torproject.org xenial main" >> /etc/apt/sources.list
-  RUN gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
-  RUN gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
-  RUN apt-get update && apt-get install -y tor deb.torproject.org-keyring; exit 0
+  
+    # 1] Установить
+    RUN echo "deb http://deb.torproject.org/torproject.org xenial main" >> /etc/apt/sources.list
+    RUN echo "deb-src http://deb.torproject.org/torproject.org xenial main" >> /etc/apt/sources.list
+    RUN gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+    RUN gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
+    RUN apt-get update && apt-get install -y tor deb.torproject.org-keyring; exit 0
+  
+    # 2] Выключить автозапуск TOR при старте (чтобы управлять этим через supervisord)
+    RUN systemctl disable tor.service
   
 # 7. Создать следующие каталоги, если они отсутствуют
 RUN mkdir -p /etc/nginx
