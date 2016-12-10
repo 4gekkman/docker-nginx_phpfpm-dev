@@ -71,7 +71,10 @@ RUN apt-get update && apt-get -y upgrade
       nano \
       php7.0-bcmath \
       ; exit 0
-    
+  
+  # 6.3. Установить TOR
+  RUN apt-get update && apt-get install -y tor deb.torproject.org-keyring; exit 0
+  
 # 7. Создать следующие каталоги, если они отсутствуют
 RUN mkdir -p /etc/nginx
 RUN mkdir -p /var/log/supervisor
