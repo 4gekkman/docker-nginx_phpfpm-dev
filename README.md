@@ -4,7 +4,7 @@
 
   - [Ссылки](#link1)
   - [Введение](#link2)
-	- [Общее описание образа](#link3)
+  - [Общее описание образа](#link3)
   - [Заметки к релизам](#link100)
 
 ---
@@ -15,8 +15,8 @@
   > Адрес образа на github
       https://github.com/4gekkman/docker-nginx_phpfpm-dev
 
-	> Адрес образа на docker hub
-      https://hub.docker.com/r/4gekkman/docker-nginx_phpfpm-dev/  
+  > Адрес образа на docker hub
+      https://hub.docker.com/r/4gekkman/docker-nginx_phpfpm-dev/
 			
 ```
 ## Общее описание образа <a id="link2"></a>
